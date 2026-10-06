@@ -1,0 +1,32 @@
+# Keep source datasets local; track the MOM6 grid configuration.
+/RAW/*
+!/RAW/GRID/
+
+# Ignore NetCDF outside the grid directory, wherever it is created.
+*.nc
+*.nc4
+*.nc.gz
+!/RAW/GRID/*.nc
+!/RAW/GRID/*.nc4
+!/RAW/GRID/*.nc.gz
+
+# Runoff, legacy benchmarks, and mapping caches are not committed.
+# Keep the small, reproducible Hill comparison reports as validation evidence.
+/outputs/*
+!/outputs/hill_*_comparison.json
+*.npz
+
+# Python, local environments, notebooks, and editor/OS temporary files.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+._*
+*.swp
+*.swo
+*~
+
+# Downloaded setup bundle does not belong in the repository.
+River-MOM6-repo-setup.zip
