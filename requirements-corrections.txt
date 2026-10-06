@@ -1,0 +1,4 @@
+# Optional ARC11k Ob/Mezen step; base requirements stay unchanged.
+-r requirements.txt
+pandas
+openpyxl

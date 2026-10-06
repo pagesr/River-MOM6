@@ -1,20 +1,26 @@
-# Keep source datasets local; track the MOM6 grid configuration.
-/RAW/*
-!/RAW/GRID/
-
-# Ignore NetCDF outside the grid directory, wherever it is created.
+# Data stay local unless explicitly retained as grid configuration.
+# Do not ignore whole RAW directories: their scripts and folder markers belong in Git.
 *.nc
 *.nc4
 *.nc.gz
-!/RAW/GRID/*.nc
-!/RAW/GRID/*.nc4
-!/RAW/GRID/*.nc.gz
-
-# Runoff, legacy benchmarks, and mapping caches are not committed.
-# Keep the small, reproducible Hill comparison reports as validation evidence.
-/outputs/*
-!/outputs/hill_*_comparison.json
 *.npz
+!/RAW/GRID/**/*.nc
+!/RAW/GRID/**/*.nc4
+!/RAW/GRID/**/*.nc.gz
+
+# Retain the northern LDD subset used by this configuration, not the full download.
+/RAW/GRID/**/ldd_glofas*.nc
+!/RAW/GRID/ldd_glofas_v4_0_subset.nc
+
+# Observation Excel inputs stay local; retain the RAW/OBS folder marker.
+/RAW/OBS/*.xlsx
+/RAW/OBS/*.xls
+
+# Preserve every output folder, but only commit markers and small QC reports.
+/outputs/**
+!/outputs/**/
+!/outputs/**/.gitkeep
+!/outputs/*_comparison.json
 
 # Python, local environments, notebooks, and editor/OS temporary files.
 __pycache__/
@@ -28,5 +34,5 @@ venv/
 *.swo
 *~
 
-# Downloaded setup bundle does not belong in the repository.
-River-MOM6-repo-setup.zip
+# Downloaded bundles do not belong in the repository.
+River-MOM6-*.zip

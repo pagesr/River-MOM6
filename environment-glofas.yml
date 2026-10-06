@@ -1,0 +1,14 @@
+# Optional Step 2 environment. Hill-only processing still uses requirements.txt.
+# If the existing environment already runs the legacy GloFAS script, use it for
+# the first comparison so xESMF/ESMPy versions stay consistent.
+name: river-mom6
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - netcdf4
+  - xarray
+  - dask
+  - xesmf
+  - esmpy
